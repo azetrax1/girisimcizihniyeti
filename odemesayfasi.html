@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Güvenli Ödeme - Girişimci Gibi Düşün E-Kitap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-fami            <div class="guarantee">
+                <div class="guarantee-title">
+                    <span>💰</span>
+                    <span>3 Gün Para İade Garantisi</span>
+                </div>
+                <div class="guarantee-text">
+                    Dijital ürün olması sebebiyle, satın alma tarihinden itibaren yalnızca 3 gün içinde iade talebinde bulunabilirsiniz.
+                </div>
+            </div>e-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        /* Sol Taraf - Ödeme Formu */
+        .payment-section {
+            padding: 40px;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .security-badges {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            background: var(--light);
+            border-radius: 8px;
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .badge-icon {
+            color: var(--success);
+            font-size: 16px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .required {
+            color: var(--danger);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .card-input-group {
+            position: relative;
+        }
+
+        .card-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .payment-method {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            border-color: var(--primary);
+        }
+
+        .payment-method.active {
+            border-color: var(--primary);
+            background: var(--light);
+        }
+
+        .payment-method-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .payment-method-name {
+            font-size: 14px;
+            color: var(--dark);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .checkbox-label {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .checkbox-label a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .secure-text {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* Sağ Taraf - Sipariş Özeti */
+        .order-summary {
+            background: var(--light);
+            padding: 40px;
+            border-left: 1px solid var(--border);
+        }
+
+        .summary-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .product-item {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .product-image {
+            width: 80px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .product-subtitle {
+            font-size: 13px;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-old {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .price-new {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .discount-badge {
+            background: var(--success);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .promo-code {
+            margin-bottom: 20px;
+        }
+
+        .promo-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .promo-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .promo-btn {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .promo-btn:hover {
+            background: var(--secondary);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 15px;
+            color: var(--gray);
+        }
+
+        .summary-item.total {
+            border-top: 2px solid var(--border);
+            margin-top: 10px;
+            padding-top: 15px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .guarantee {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .guarantee-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--warning);
+            margin-bottom: 5px;
+        }
+
+        .guarantee-text {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .trust-signals {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .trust-icon {
+            color: var(--success);
+            font-size: 16px;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .submit-btn.loading .spinner {
+            display: inline-block;
+        }
+
+        .submit-btn.loading .btn-text {
+            display: none;
+        }
+
+        /* Error Message */
+        .error-message {
+            display: none;
+            background: #fef2f2;
+            color: var(--danger);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Success Modal */
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .success-modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .success-icon {
+            font-size: 60px;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .success-text {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+
+            .order-summary {
+                border-left: none;
+                border-top: 1px solid var(--border);
+            }
+
+            .payment-section, .order-summary {
+                padding: 30px 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sol Taraf - Ödeme Formu -->
+        <div class="payment-section">
+            <div class="header">
+                <div class="logo">GİRİŞİMCİ</div>
+                <div class="security-badges">
+                    <div class="badge">
+                        <span class="badge-icon">🔒</span>
+                        <span>SSL Güvenli</span>
+                    </div>
+                    <div class="badge">
+                        <span class="badge-icon">✓</span>
+                        <span>256-bit Şifreleme</span>
+                    </div>
+                    <div class="badge">
+                        <span class="badge-icon">🛡️</span>
+                        <span>%100 Güvenli Ödeme</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+
+            <form id="paymentForm">
+                <!-- Ödeme Yöntemi -->
+                <h2>Ödeme Yöntemi</h2>
+                <div class="payment-methods">
+                    <div class="payment-method active" data-method="card">
+                        <div class="payment-method-icon">💳</div>
+                        <div class="payment-method-name">Kredi/Banka Kartı</div>
+                    </div>
+                    <div class="payment-method" data-method="transfer">
+                        <div class="payment-method-icon">🏦</div>
+                        <div class="payment-method-name">Havale/EFT</div>
+                    </div>
+                </div>
+
+                <!-- Kişisel Bilgiler -->
+                <h2>Kişisel Bilgiler</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Ad <span class="required">*</span></label>
+                        <input type="text" name="firstName" required placeholder="Adınız">
+                    </div>
+                    <div class="form-group">
+                        <label>Soyad <span class="required">*</span></label>
+                        <input type="text" name="lastName" required placeholder="Soyadınız">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>E-posta Adresi <span class="required">*</span></label>
+                    <input type="email" name="email" required placeholder="ornek@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Telefon Numarası <span class="required">*</span></label>
+                    <input type="tel" name="phone" required placeholder="0 (5XX) XXX XX XX">
+                </div>
+
+                <!-- Kart Bilgileri -->
+                <div id="cardSection">
+                    <h2>Kart Bilgileri</h2>
+                    <div class="form-group">
+                        <label>Kart Üzerindeki İsim <span class="required">*</span></label>
+                        <input type="text" name="cardName" placeholder="JOHN DOE">
+                    </div>
+
+                    <div class="form-group card-input-group">
+                        <label>Kart Numarası <span class="required">*</span></label>
+                        <input type="text" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                        <span class="card-icon">💳</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Son Kullanma Tarihi <span class="required">*</span></label>
+                            <input type="text" name="expiry" placeholder="AA/YY" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label>CVV <span class="required">*</span></label>
+                            <input type="text" name="cvv" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Havale/EFT Bilgileri -->
+                <div id="transferSection" style="display: none;">
+                    <h2>Havale/EFT Bilgileri</h2>
+                    <div style="background: var(--light); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                        <p style="font-size: 14px; color: var(--dark); margin-bottom: 15px;">
+                            <strong>Banka:</strong> Ziraat Bankası<br>
+                            <strong>Hesap Adı:</strong> Girişimci Eğitim Ltd. Şti.<br>
+                            <strong>IBAN:</strong> TR12 3456 7890 1234 5678 9012 34<br>
+                            <strong>Açıklama:</strong> İsim Soyisim - E-kitap
+                        </p>
+                        <p style="font-size: 13px; color: var(--gray);">
+                            ⚠️ Havale/EFT sonrası kitabınız 30 dakika içinde e-posta adresinize gönderilecektir.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Sözleşmeler -->
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms" class="checkbox-label">
+                        <a href="politikalar.html?tab=sales" target="_blank">Satış Sözleşmesi</a> ve <a href="politikalar.html?tab=privacy" target="_blank">Gizlilik Politikası</a>'nı okudum, kabul ediyorum.
+                    </label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="marketing">
+                    <label for="marketing" class="checkbox-label">
+                        Kampanya ve bilgilendirmelerden e-posta ile haberdar olmak istiyorum.
+                    </label>
+                </div>
+
+                <!-- Ödeme Butonu -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Ödemeyi Tamamla - ₺97</span>
+                    <div class="spinner"></div>
+                </button>
+
+                <div class="secure-text">
+                    🔒 Ödemeniz 256-bit SSL şifreleme ile korunmaktadır
+                </div>
+            </form>
+        </div>
+
+        <!-- Sağ Taraf - Sipariş Özeti -->
+        <div class="order-summary">
+            <h3 class="summary-title">Sipariş Özeti</h3>
+
+            <div class="product-item">
+                <div class="product-image">📚</div>
+                <div class="product-details">
+                    <div class="product-title">Girişimci Gibi Düşün</div>
+                    <div class="product-subtitle">E-Kitap (PDF)</div>
+                    <div class="product-price">
+                        <span class="price-old">₺327</span>
+                        <span class="price-new">₺97</span>
+                        <span class="discount-badge">%70 İNDİRİM</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-code">
+                <label style="font-size: 14px; margin-bottom: 10px; display: block;">İndirim Kodu</label>
+                <div class="promo-input-group">
+                    <input type="text" class="promo-input" placeholder="Kodunuzu girin" id="promoCode">
+                    <button class="promo-btn" onclick="applyPromo()">Uygula</button>
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <span>Ara Toplam</span>
+                <span>₺327</span>
+            </div>
+            <div class="summary-item">
+                <span>İndirim</span>
+                <span style="color: var(--success);">-₺230</span>
+            </div>
+            <div class="summary-item" id="promoDiscount" style="display: none;">
+                <span>Promosyon İndirimi</span>
+                <span style="color: var(--success);">-₺0</span>
+            </div>
+            <div class="summary-item total">
+                <span>Toplam</span>
+                <span id="totalPrice">₺97</span>
+            </div>
+
+            <div class="guarantee">
+                <div class="guarantee-title">
+                    <span>💰</span>
+                    <span>Para İade Garantisi</span>
+                </div>
+                <div class="guarantee-text">
+                    Memnun kalmazsanız 10 gün içinde paranızı iade ediyoruz.
+                </div>
+            </div>
+
+            <div class="trust-signals">
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    <span>Anında e-posta ile teslimat</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    <span>Ömür boyu güncelleme hakkı</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    <span>7/24 destek hizmeti</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    <span>10.000+ mutlu okuyucu</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">✓</div>
+            <div class="success-title">Ödeme Başarılı!</div>
+            <div class="success-text">
+                Siparişiniz onaylandı. E-kitabınız birkaç dakika içinde e-posta adresinize gönderilecektir.
+            </div>
+            <button class="submit-btn" onclick="closeModal()">Tamam</button>
+        </div>
+    </div>
+
+    <script>
+        // Payment method switching
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
+                this.classList.add('active');
+                
+                const methodType = this.dataset.method;
+                if (methodType === 'card') {
+                    document.getElementById('cardSection').style.display = 'block';
+                    document.getElementById('transferSection').style.display = 'none';
+                } else {
+                    document.getElementById('cardSection').style.display = 'none';
+                    document.getElementById('transferSection').style.display = 'block';
+                }
+            });
+        });
+
+        // Card number formatting
+        document.querySelector('input[name="cardNumber"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+
+        // Expiry date formatting
+        document.querySelector('input[name="expiry"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0,2) + '/' + value.slice(2,4);
+            }
+            e.target.value = value;
+        });
+
+        // CVV only numbers
+        document.querySelector('input[name="cvv"]').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        // Phone number formatting
+        document.querySelector('input[name="phone"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 1) {
+                    value = '0 (' + value;
+                } else if (value.length <= 4) {
+                    value = '0 (' + value.slice(1,4) + ') ' + value.slice(4);
+                } else if (value.length <= 7) {
+                    value = '0 (' + value.slice(1,4) + ') ' + value.slice(4,7) + ' ' + value.slice(7);
+                } else if (value.length <= 9) {
+                    value = '0 (' + value.slice(1,4) + ') ' + value.slice(4,7) + ' ' + value.slice(7,9) + ' ' + value.slice(9);
+                } else {
+                    value = '0 (' + value.slice(1,4) + ') ' + value.slice(4,7) + ' ' + value.slice(7,9) + ' ' + value.slice(9,11);
+                }
+            }
+            e.target.value = value;
+        });
+
+        // Promo code
+        function applyPromo() {
+            const promoCode = document.getElementById('promoCode').value.toUpperCase();
+            const promoDiscount = document.getElementById('promoDiscount');
+            const totalPrice = document.getElementById('totalPrice');
+            
+            if (promoCode === 'YENI10') {
+                promoDiscount.style.display = 'flex';
+                promoDiscount.querySelector('span:last-child').textContent = '-₺10';
+                totalPrice.textContent = '₺87';
+                document.getElementById('promoCode').style.borderColor = 'var(--success)';
+            } else if (promoCode === 'OZEL20') {
+                promoDiscount.style.display = 'flex';
+                promoDiscount.querySelector('span:last-child').textContent = '-₺20';
+                totalPrice.textContent = '₺77';
+                document.getElementById('promoCode').style.borderColor = 'var(--success)';
+            } else {
+                document.getElementById('promoCode').style.borderColor = 'var(--danger)';
+                setTimeout(() => {
+                    document.getElementById('promoCode').style.borderColor = 'var(--border)';
+                }, 2000);
+            }
+        }
+
+        // Form validation and submission
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Clear previous errors
+            errorMessage.classList.remove('show');
+            
+            // Basic validation
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim() || (field.type === 'checkbox' && !field.checked)) {
+                    isValid = false;
+                    field.style.borderColor = 'var(--danger)';
+                } else {
+                    field.style.borderColor = 'var(--border)';
+                }
+            });
+            
+            if (!isValid) {
+                errorMessage.textContent = 'Lütfen tüm zorunlu alanları doldurun.';
+                errorMessage.classList.add('show');
+                return;
+            }
+            
+            // Email validation
+            const email = this.email.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorMessage.textContent = 'Geçerli bir e-posta adresi girin.';
+                errorMessage.classList.add('show');
+                return;
+            }
+            
+            // Card validation (only if card method is selected)
+            const activeMethod = document.querySelector('.payment-method.active').dataset.method;
+            if (activeMethod === 'card') {
+                const cardNumber = this.cardNumber.value.replace(/\s/g, '');
+                if (cardNumber.length !== 16) {
+                    errorMessage.textContent = 'Geçerli bir kart numarası girin.';
+                    errorMessage.classList.add('show');
+                    return;
+                }
+                
+                const expiry = this.expiry.value;
+                const expiryRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+                if (!expiryRegex.test(expiry)) {
+                    errorMessage.textContent = 'Geçerli bir son kullanma tarihi girin (AA/YY).';
+                    errorMessage.classList.add('show');
+                    return;
+                }
+                
+                const cvv = this.cvv.value;
+                if (cvv.length !== 3) {
+                    errorMessage.textContent = 'Geçerli bir CVV girin.';
+                    errorMessage.classList.add('show');
+                    return;
+                }
+            }
+            
+            // Show loading state
+            submitBtn.classList.add('loading');
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                submitBtn.classList.remove('loading');
+                document.getElementById('successModal').classList.add('show');
+                
+                // Reset form
+                this.reset();
+                const promoDiscount = document.getElementById('promoDiscount');
+                const totalPrice = document.getElementById('totalPrice');
+                if (promoDiscount.style.display === 'flex') {
+                    promoDiscount.style.display = 'none';
+                    totalPrice.textContent = '₺97';
+                    document.querySelector('.submit-btn .btn-text').textContent = 'Ödemeyi Tamamla - ₺97';
+                }
+            }, 2000);
+        });
+
+        // Close success modal
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('show');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Show active payment method section on page load
+        const activeMethod = document.querySelector('.payment-method.active').dataset.method;
+        if (activeMethod === 'card') {
+            document.getElementById('cardSection').style.display = 'block';
+            document.getElementById('transferSection').style.display = 'none';
+        } else {
+            document.getElementById('cardSection').style.display = 'none';
+            document.getElementById('transferSection').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

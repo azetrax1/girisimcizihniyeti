@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politikalar ve İletişim - Girişimci Gibi Düşün</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1000px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: var(--light);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .content-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .section-content {
+            color: var(--gray);
+        }
+
+        .section-content h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 15px;
+            color: var(--dark);
+        }
+
+        .section-content p {
+            margin-bottom: 15px;
+        }
+
+        .section-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .section-content li {
+            margin-bottom: 10px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-input {
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            justify-self: start;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #ecfdf5;
+            color: #059669;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-copy {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                width: 100%;
+                text-align: center;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="girisimcizihniyeti.html" class="logo">GİRİŞİMCİ</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="tabs">
+            <button class="tab active" onclick="showContent('privacy')">Gizlilik Politikası</button>
+            <button class="tab" onclick="showContent('terms')">Kullanım Koşulları</button>
+            <button class="tab" onclick="showContent('sales')">Satış Sözleşmesi</button>
+            <button class="tab" onclick="showContent('refund')">İade Politikası</button>
+            <button class="tab" onclick="showContent('contact')">İletişim</button>
+        </div>
+
+        <!-- Gizlilik Politikası -->
+        <div id="privacy" class="content-section">
+            <h2 class="section-title">Gizlilik Politikası</h2>
+            <div class="section-content">
+                <p>Bu gizlilik politikası, kişisel verilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar.</p>
+
+                <h3>Toplanan Bilgiler</h3>
+                <p>Sizden şu bilgileri toplayabiliriz:</p>
+                <ul>
+                    <li>Ad ve soyad</li>
+                    <li>E-posta adresi</li>
+                    <li>Telefon numarası</li>
+                    <li>Fatura bilgileri</li>
+                </ul>
+
+                <h3>Bilgilerin Kullanımı</h3>
+                <p>Topladığımız bilgileri şu amaçlarla kullanırız:</p>
+                <ul>
+                    <li>Siparişlerinizi işleme koymak</li>
+                    <li>Size ürün ve hizmetlerimiz hakkında bilgi vermek</li>
+                    <li>Müşteri hizmetleri sağlamak</li>
+                    <li>Yasal yükümlülüklerimizi yerine getirmek</li>
+                </ul>
+
+                <h3>Bilgi Güvenliği</h3>
+                <p>Kişisel verilerinizin güvenliğini sağlamak için endüstri standardı güvenlik önlemleri kullanıyoruz. Verileriniz SSL şifreleme ile korunmaktadır.</p>
+
+                <h3>Çerezler</h3>
+                <p>Web sitemiz, deneyiminizi geliştirmek için çerezler kullanmaktadır. Tarayıcı ayarlarınızdan çerezleri devre dışı bırakabilirsiniz.</p>
+            </div>
+        </div>
+
+        <!-- Kullanım Koşulları -->
+        <div id="terms" class="content-section" style="display: none;">
+            <h2 class="section-title">Kullanım Koşulları</h2>
+            <div class="section-content">
+                <p>Bu web sitesini kullanarak aşağıdaki koşulları kabul etmiş olursunuz:</p>
+
+                <h3>Telif Hakkı</h3>
+                <p>Site içeriğinin tüm hakları saklıdır. İçeriğin kopyalanması, çoğaltılması veya dağıtılması yasaktır.</p>
+
+                <h3>Ürün Kullanımı</h3>
+                <p>Satın aldığınız e-kitap yalnızca kişisel kullanım içindir. Ticari amaçla çoğaltılamaz veya dağıtılamaz.</p>
+
+                <h3>Hesap Güvenliği</h3>
+                <p>Hesap bilgilerinizin güvenliğinden siz sorumlusunuz. Şüpheli bir durum fark ederseniz hemen bizimle iletişime geçin.</p>
+
+                <h3>Sorumluluk Reddi</h3>
+                <p>İçeriğin doğruluğu konusunda gerekli özeni göstermekle birlikte, verilen bilgilerin kullanımından doğacak sonuçlardan sorumlu değiliz.</p>
+            </div>
+        </div>
+
+        <!-- Satış Sözleşmesi -->
+        <div id="sales" class="content-section" style="display: none;">
+            <h2 class="section-title">Satış Sözleşmesi</h2>
+            <div class="section-content">
+                <h3>1. Taraflar</h3>
+                <p>Bu mesafeli satış sözleşmesi, aşağıdaki taraflar arasında düzenlenmiştir:</p>
+                <p><strong>SATICI:</strong> Girişimci Eğitim Ltd. Şti.<br>
+                Adres: [Şirket Adresi]<br>
+                Telefon: 0850 123 45 67<br>
+                E-posta: destek@girisimcigibi.com</p>
+                <p><strong>ALICI:</strong> Aşağıda bilgileri bulunan kişi (bundan sonra ALICI olarak anılacaktır)</p>
+
+                <h3>2. Sözleşmenin Konusu</h3>
+                <p>İşbu sözleşmenin konusu, ALICI'nın SATICI'ya ait internet sitesinden elektronik ortamda siparişini yaptığı "Girişimci Gibi Düşün" isimli dijital ürünün satışı ve teslimi ile ilgili olarak tarafların hak ve yükümlülüklerinin düzenlenmesidir.</p>
+
+                <h3>3. Ürün Bilgileri</h3>
+                <p>Ürün Adı: Girişimci Gibi Düşün (E-Kitap)<br>
+                Format: PDF<br>
+                Sayfa Sayısı: 120+<br>
+                Fiyat: 97₺ (KDV dahil)</p>
+
+                <h3>4. Teslimat</h3>
+                <p>Ürün, ödemenin tamamlanmasını takiben ALICI'nın belirttiği e-posta adresine dijital olarak gönderilecektir. Teslimat süresi maksimum 24 saattir.</p>
+
+                <h3>5. Ödeme</h3>
+                <p>Ödeme, kredi kartı veya banka havalesi/EFT yoluyla yapılabilir. Tüm ödemeler Türk Lirası (TL) cinsinden yapılacaktır.</p>
+
+                <h3>6. Cayma Hakkı</h3>
+                <p>ALICI, ürünün dijital niteliği göz önünde bulundurularak, ürünün kendisine teslim edildiği tarihten itibaren yalnızca 3 (üç) gün içerisinde, ürünü indirmemiş veya açmamış olmak kaydıyla, gerekçe göstermeksizin sözleşmeden cayma hakkına sahiptir. Bu sürenin geçmesi veya ürünün indirilmesi/açılması durumunda cayma hakkı kullanılamaz.</p>
+
+                <h3>7. Fikri Mülkiyet Hakları</h3>
+                <p>Ürünün tüm fikri mülkiyet hakları SATICI'ya aittir. ALICI, ürünü yalnızca kişisel kullanım amacıyla kullanmayı, çoğaltmamayı ve üçüncü kişilerle paylaşmamayı kabul eder.</p>
+
+                <h3>8. Uyuşmazlıkların Çözümü</h3>
+                <p>İşbu sözleşmeden doğan uyuşmazlıklarda Türkiye Cumhuriyeti mahkemeleri yetkilidir.</p>
+
+                <h3>9. Yürürlük</h3>
+                <p>Bu sözleşme, ALICI tarafından elektronik ortamda onaylanması ile yürürlüğe girer.</p>
+            </div>
+        </div>
+
+        <!-- İade Politikası -->
+        <div id="refund" class="content-section" style="display: none;">
+            <h2 class="section-title">İade Politikası</h2>
+            <div class="section-content">
+                <p>Ürünün dijital niteliği göz önünde bulundurularak hazırlanan iade politikamız aşağıdaki gibidir:</p>
+
+                <h3>Önemli Not</h3>
+                <p class="section-content" style="color: #ef4444; font-weight: 500;">Ürünün dijital formatı nedeniyle, iade talebi yalnızca satın alma tarihinden itibaren 3 (ÜÇ) gün içinde kabul edilmektedir. Bu süre geçtikten sonra yapılan iade talepleri kesinlikle değerlendirmeye alınmayacaktır.</p>
+
+                <h3>İade Süreci</h3>
+                <ul>
+                    <li>İade talebinizi 3 gün içerisinde oluşturmalısısnız. Aksi taktirde iade değerlendirmeye alınmayacaktır</li>
+                    <li>İade talebinizi destek@girisimcigibi.com adresine mail atarak iletebilirsiniz</li>
+                    <li>Talebiniz 24 saat içinde incelenecektir</li>
+                    <li>Talep uygun görülürse, ödeme tutarı 10 iş günü içinde iade edilecektir</li>
+                </ul>
+
+                <h3>İade Koşulları</h3>
+                <p>İade talebinizin değerlendirilebilmesi için:</p>
+                <ul>
+                    <li>Satın alma tarihinden itibaren 3 gün içinde başvurmuş olmanız gerekmektedir</li>
+                    <li>Sipariş numarası ve ödeme dekontunuzu iletmelisiniz</li>
+                    <li>İade gerekçenizi açıkça belirtmelisiniz</li>
+                </ul>
+
+                <h3>Red Nedenleri</h3>
+                <ul>
+                    <li>3 günlük süre geçtikten sonra yapılan tüm iade talepleri</li>
+                    <li>E-kitabın indirilmiş veya açılmış olması</li>
+                    <li>Eksik veya yanlış bilgi ile yapılan başvurular</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- İletişim -->
+        <div id="contact" class="content-section" style="display: none;">
+            <h2 class="section-title">İletişim</h2>
+            <div class="section-content">
+                <p>Bize aşağıdaki kanallardan ulaşabilirsiniz:</p>
+
+                <h3>İletişim Bilgileri</h3>
+                <p>
+                    <strong>E-posta:</strong> destek@girisimcigibi.com<br>
+                    <strong>Telefon:</strong> 0850 123 45 67<br>
+                    <strong>Çalışma Saatleri:</strong> Pazartesi - Cuma, 09:00 - 18:00
+                </p>
+
+                <form class="contact-form" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label class="form-label">Ad Soyad</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">E-posta</label>
+                        <input type="email" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Konu</label>
+                        <select class="form-input" required>
+                            <option value="">Seçiniz...</option>
+                            <option value="support">Teknik Destek</option>
+                            <option value="refund">İade Talebi</option>
+                            <option value="info">Bilgi Talebi</option>
+                            <option value="other">Diğer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Mesajınız</label>
+                        <textarea class="form-input" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Gönder</button>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-copy">© 2024 Girişimci Gibi Düşün. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function showContent(contentId) {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected content section
+            document.getElementById(contentId).style.display = 'block';
+            
+            // Update active tab
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showContent('${contentId}')"]`).classList.add('active');
+        }
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            // Show success message
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Reset form
+            event.target.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

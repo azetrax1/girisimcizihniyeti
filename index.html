@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girişimci Gibi Düşün - Zihnini Değiştir, İşini Kur | E-Kitap</title>
+    <meta name="description" content="Klasik girişimcilik yanılgısından kurtul! Sıfır sermaye ile bilgi ekonomisinde yerini al. 30 günde harekete geç.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --dark: #1e293b;
+            --light: #f1f5f9;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .cta-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 40px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff20" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat;
+            background-size: cover;
+            bottom: 0;
+            animation: wave 20s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .hero-features li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+
+        .hero-features li::before {
+            content: '✓';
+            background: white;
+            color: var(--primary);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .hero-book {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .book-3d {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            padding: 40px;
+            transform: perspective(1000px) rotateY(-15deg);
+            transition: transform 0.5s ease;
+        }
+
+        .book-3d:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .book-cover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+        }
+
+        .book-cover h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .book-cover p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 30px;
+            background: linear-gradient(135deg, var(--light), white);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* Problems Section */
+        .problems {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 80px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        .problems-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .problem-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .problem-text {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .content-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .content-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .content-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 80px 20px;
+            color: white;
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .author-role {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 10px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 20px;
+            background: var(--light);
+        }
+
+        .pricing-box {
+            max-width: 500px;
+            margin: 60px auto 0;
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-box::before {
+            content: 'EN POPÜLER';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .price-old {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+            margin-bottom: 10px;
+        }
+
+        .price-new {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .price-currency {
+            font-size: 2rem;
+        }
+
+        .price-save {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .price-features li {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .price-features li:last-child {
+            border-bottom: none;
+        }
+
+        .price-features li::before {
+            content: '✓';
+            background: var(--success);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 60px auto 0;
+        }
+
+        .faq-item {
+            background: var(--light);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            padding: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #e2e8f0;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 25px 25px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-countdown {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .countdown-timer {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-copy {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-book {
+                order: -1;
+            }
+
+            .book-3d {
+                transform: none;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .pricing-box {
+                padding: 30px 20px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">GİRİŞİMCİ</div>
+            <nav class="nav-menu">
+                <a href="#ozellikler" class="nav-link">Özellikler</a>
+                <a href="#icerik" class="nav-link">İçerik</a>
+                <a href="#yorumlar" class="nav-link">Yorumlar</a>
+                <a href="#fiyat" class="nav-link">Fiyat</a>
+                <a href="#sss" class="nav-link">SSS</a>
+                <a href="odemesayfası.html" class="cta-header">Hemen Al</a>
+            </nav>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">🚀 30 GÜNDE HAREKETE GEÇ</span>
+                <h1 class="hero-title">Girişimci Gibi Düşün, Zihnini Değiştir, İşini Kur</h1>
+                <p class="hero-subtitle">Klasik girişimcilik yanılgısından kurtul! Sıfır sermaye ile bilgi ekonomisinde yerini al.</p>
+                
+                <ul class="hero-features">
+                    <li>Sıfır sermaye ile başla</li>
+                    <li>30 günlük eylem planı</li>
+                    <li>Gerçek hayat örnekleri</li>
+                    <li>Pasif gelir stratejileri</li>
+                </ul>
+
+                <div class="hero-cta">
+                    <a href="odemesayfası.html" class="btn-primary">Şimdi Satın Al - 97₺</a>
+                    <a href="#icerik" class="btn-secondary">İçeriği İncele</a>
+                </div>
+            </div>
+
+            <div class="hero-book">
+                <div class="book-3d">
+                    <div class="book-cover">
+                        <h3>GİRİŞİMCİ GİBİ DÜŞÜN</h3>
+                        <p>Zihnini Değiştir, İşini Kur</p>
+                        <div style="margin-top: 30px; font-size: 3rem;">📚</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card fade-in">
+                <div class="stat-number">0₺</div>
+                <div class="stat-label">Başlangıç Sermayesi</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">30</div>
+                <div class="stat-label">Günlük Eylem Planı</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Detaylı Bölüm</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">15K+</div>
+                <div class="stat-label">Aylık Gelir Potansiyeli</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems" id="ozellikler">
+        <div class="section-header">
+            <h2 class="section-title">Bu Sorunlardan Hangisi Sizin?</h2>
+            <p class="section-subtitle">Çoğu girişimci adayının yaşadığı zorluklar</p>
+        </div>
+
+        <div class="problems-grid">
+            <div class="problem-card fade-in">
+                <div class="problem-icon">😰</div>
+                <h3 class="problem-title">Sermaye Yok</h3>
+                <p class="problem-text">İş kurmak için büyük paralar gerektiğini düşünüyor ve başlamaya cesaret edemiyorsunuz.</p>
+            </div>
+
+            <div class="problem-card fade-in">
+                <div class="problem-icon">🤔</div>
+                <h3 class="problem-title">Nereden Başlayacağınızı Bilmiyorsunuz</h3>
+                <p class="problem-text">O kadar çok seçenek var ki, hangisinin doğru olduğuna karar veremiyorsunuz.</p>
+            </div>
+
+            <div class="problem-card fade-in">
+                <div class="problem-icon">💔</div>
+                <h3 class="problem-title">Başarısızlık Korkusu</h3>
+                <p class="problem-text">"Ya olmazsa?" sorusu sizi felç ediyor ve harekete geçmenizi engelliyor.</p>
+            </div>
+
+            <div class="problem-card fade-in">
+                <div class="problem-icon">📉</div>
+                <h3 class="problem-title">Yanlış İş Modelleri</h3>
+                <p class="problem-text">Amazon FBA, dropshipping gibi riskli modellerde para kaybettiniz veya kaybetmekten korkuyorsunuz.</p>
+            </div>
+
+            <div class="problem-card fade-in">
+                <div class="problem-icon">🎯</div>
+                <h3 class="problem-title">Odaklanma Sorunu</h3
+                    <p class="problem-text">Bir gün bu, bir gün şu... Sonuç: Hiçbirinde ilerleme yok.</p>
+            </div>
+
+            <div class="problem-card fade-in">
+                <div class="problem-icon">⏰</div>
+                <h3 class="problem-title">Zaman Bulamıyorum</h3>
+                <p class="problem-text">İş, aile, sosyal hayat derken girişimcilik için vakit kalmıyor gibi görünüyor.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section" id="icerik">
+        <div class="content-container">
+            <div class="section-header">
+                <h2 class="section-title">Kitapta Neler Var?</h2>
+                <p class="section-subtitle">7 bölüm, 30 günlük eylem planı, gerçek hayat örnekleri</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card fade-in">
+                    <span class="content-number">1</span>
+                    <h3 class="content-title">Girişimcilik Neden Zihinde Başlar?</h3>
+                    <p>Mindset değişimi olmadan başarı mümkün değil. Doğru zihinsel altyapıyı oluşturun.</p>
+                </div>
+
+                <div class="content-card fade-in">
+                    <span class="content-number">2</span>
+                    <h3 class="content-title">Korkular ve Bariyerler</h3>
+                    <p>Başarısızlık korkusu, sermaye eksikliği bahanesi ve diğer engelleri aşın.</p>
+                </div>
+
+                <div class="content-card fade-in">
+                    <span class="content-number">3</span>
+                    <h3 class="content-title">Yanlış Anlaşılan Girişimcilik</h3>
+                    <p>Amazon FBA, dropshipping tuzakları ve gerçek başarı hikayeleri.</p>
+                </div>
+
+                <div class="content-card fade-in">
+                    <span class="content-number">4</span>
+                    <h3 class="content-title">Bilgi Satarak Girişimcilik</h3>
+                    <p>Sıfır sermaye ile başlayabileceğiniz, ölçeklenebilir iş modeli.</p>
+                </div>
+
+                <div class="content-card fade-in">
+                    <span class="content-number">5</span>
+                    <h3 class="content-title">Uzmanlaşma ve Odaklanma</h3>
+                    <p>Tek bir alanda derinleşmenin gücü ve niş bulma stratejileri.</p>
+                </div>
+
+                <div class="content-card fade-in">
+                    <span class="content-number">6</span>
+                    <h3 class="content-title">Girişimci Zihniyetin Altın Kuralları</h3>
+                    <p>Başarılı girişimcilerin ortak özellikleri ve alışkanlıkları.</p>
+                </div>
+
+                <div class="content-card fade-in">
+                    <span class="content-number">7</span>
+                    <h3 class="content-title">Harekete Geçme Planı</h3>
+                    <p>İlk 30 günde yapacaklarınız, adım adım yol haritası.</p>
+                </div>
+
+                <div class="content-card fade-in">
+                    <span class="content-number">+</span>
+                    <h3 class="content-title">Bonus: Şablonlar ve Araçlar</h3>
+                    <p>Hemen kullanabileceğiniz pratik şablonlar ve kontrol listeleri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="yorumlar">
+        <div class="section-header" style="color: white;">
+            <h2 class="section-title" style="background: white; -webkit-background-clip: text;">Okuyucularımız Ne Diyor?</h2>
+            <p class="section-subtitle" style="opacity: 0.9;">Binlerce kişi hayatını değiştirdi, sıra sizde!</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card fade-in">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"3 aydır ertelediğim e-kitap projesini bu kitabı okuduktan sonra 2 haftada bitirdim. İlk ayda 8 satış yaptım!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MK</div>
+                    <div class="author-info">
+                        <div class="author-name">Mehmet K.</div>
+                        <div class="author-role">Yazılım Geliştirici</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card fade-in">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Amazon FBA'da 50 bin TL kaybettikten sonra bu kitabı okudum. Keşke daha önce okusaydım. Şimdi bilgi ürünleri satıyorum ve çok mutluyum."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AY</div>
+                    <div class="author-info">
+                        <div class="author-name">Ayşe Y.</div>
+                        <div class="author-role">E-ticaret Eski Girişimcisi</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card fade-in">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Klasik motivasyon kitaplarından farklı, gerçekten uygulanabilir stratejiler var. 30 günlük plan harika!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ES</div>
+                    <div class="author-info">
+                        <div class="author-name">Emre S.</div>
+                        <div class="author-role">Grafik Tasarımcı</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="fiyat">
+        <div class="section-header">
+            <h2 class="section-title">Özel Lansman Fiyatı</h2>
+            <p class="section-subtitle">Sınırlı süre için %70 indirimli!</p>
+        </div>
+
+        <div class="pricing-box">
+            <div class="price-old">₺327</div>
+            <div class="price-new"><span class="price-currency">₺</span>97</div>
+            <span class="price-save">230₺ Tasarruf!</span>
+
+            <ul class="price-features">
+                <li>📚 Tam 120+ sayfa içerik</li>
+                <li>🎯 30 günlük eylem planı</li>
+                <li>📊 Hazır şablonlar ve kontrol listeleri</li>
+                <li>💡 Gerçek hayat örnekleri ve vaka analizleri</li>
+                <li>📧 E-mail desteği (ilk 30 gün)</li>
+                <li>🔄 Ömür boyu güncellemeler</li>
+                <li>💰 30 gün para iade garantisi</li>
+            </ul>
+
+            <a href="odemesayfası.html" class="btn-primary" style="width: 100%; text-align: center;">
+                Hemen Satın Al - ₺97
+            </a>
+
+            <p style="margin-top: 20px; text-align: center; color: #64748b; font-size: 0.9rem;">
+                Güvenli ödeme • Anında teslimat • SSL korumalı
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="sss">
+        <div class="section-header">
+            <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+            <p class="section-subtitle">Merak edilenleri yanıtladık</p>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Bu kitap kimler için uygun?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Bu kitap, klasik girişimcilik modellerinden sıkılan, büyük sermaye olmadan iş kurmak isteyen, bilgi ekonomisinde yer almak isteyen herkes için idealdir. Özellikle yan gelir oluşturmak isteyen çalışanlar, öğrenciler ve kariyerinde farklı bir yol arayan profesyoneller için hazırlanmıştır.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Gerçekten sermaye gerekmeden iş kurulabilir mi?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Evet! Bilgi ürünleri sattığınızda tek ihtiyacınız bilgisayar ve internet bağlantısıdır. E-kitap, online kurs, şablon satışı gibi modellerde fiziksel stok, kargo, depo gibi maliyetler yoktur. Sadece zamanınızı ve bilginizi yatırım olarak kullanırsınız.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>30 günde gerçekten sonuç alabilir miyim?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>30 gün içinde ilk ürününüzü oluşturup satışa sunabilirsiniz. İlk satışlarınızı yapma süresi kişiden kişiye değişir, ancak kitaptaki stratejileri uygularsanız 30-60 gün içinde ilk gelirlerinizi elde etmeye başlarsınız.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Para iade garantisi nasıl işliyor?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Kitabı satın aldıktan sonra 30 gün içinde memnun kalmazsanız, hiçbir soru sormadan paranızı iade ediyoruz. Tek yapmanız gereken destek@girisimcigibi.com adresine mail atmanız.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Kitabı nasıl teslim alacağım?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Ödemenizi tamamladıktan hemen sonra e-mail adresinize PDF formatında gönderilecektir. Ayrıca online okuma linki de paylaşılacaktır. İstediğiniz cihazdan okuyabilirsiniz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Harekete Geçme Zamanı!</h2>
+            <p class="cta-text">Her gün ertelediğiniz, rakiplerinizin önde olduğu bir gün. Değişim şimdi başlıyor.</p>
+            
+            <div class="cta-countdown">
+                <div class="countdown-label">İndirim bitimine kalan süre:</div>
+                <div class="countdown-timer" id="countdown"></div>
+            </div>
+
+            <a href="odemesayfası.html" class="btn-primary" style="font-size: 1.2rem; padding: 20px 50px;">
+                İndirimli Fiyattan Al - ₺97
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="politikalar.html?tab=privacy">Gizlilik Politikası</a>
+                <a href="politikalar.html?tab=terms">Kullanım Koşulları</a>
+                <a href="politikalar.html?tab=refund">İade Politikası</a>
+                <a href="politikalar.html?tab=contact">İletişim</a>
+            </div>
+            <p class="footer-copy">© 2024 Girişimci Gibi Düşün. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const parent = element.parentElement;
+            parent.classList.toggle('active');
+        }
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Countdown Timer
+        function initCountdown() {
+            // Her sayfa yüklendiğinde 4 gün 3 saat 14 dakikadan başla
+            const startTime = 4 * 24 * 60 * 60 + // 4 gün
+                           3 * 60 * 60 + // 3 saat
+                           14 * 60; // 14 dakika
+            
+            let remainingTime = startTime;
+            
+            function updateCountdown() {
+                const days = Math.floor(remainingTime / (24 * 60 * 60));
+                const hours = Math.floor((remainingTime % (24 * 60 * 60)) / (60 * 60));
+                const minutes = Math.floor((remainingTime % (60 * 60)) / 60);
+                const seconds = Math.floor(remainingTime % 60);
+                
+                document.getElementById('countdown').textContent = 
+                    `${days} gün ${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (remainingTime > 0) {
+                    remainingTime--;
+                }
+            }
+            
+            // İlk çağrı
+            updateCountdown();
+            
+            // Her saniye güncelle
+            setInterval(updateCountdown, 1000);
+        }
+
+        // Sayfa yüklendiğinde sayacı başlat
+        window.addEventListener('load', initCountdown);
+
+        // Purchase function
+        function purchaseBook() {
+            alert('Ödeme sayfasına yönlendiriliyorsunuz...');
+            // Burada gerçek ödeme entegrasyonu olacak
+        }
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('.header');
+            
+            if (currentScroll <= 0) {
+                header.classList.remove('scroll-up');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+                header.classList.remove('scroll-up');
+                header.classList.add('scroll-down');
+            } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+                header.classList.remove('scroll-down');
+                header.classList.add('scroll-up');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Add scroll styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .header.scroll-down {
+                transform: translateY(-100%);
+            }
+            .header.scroll-up {
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            .nav-menu.active {
+                display: flex;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            .mobile-menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .mobile-menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html></parameter>
+</invoke>
